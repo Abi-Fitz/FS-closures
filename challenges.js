@@ -1,5 +1,5 @@
 /*------------------
-1)
+1) Incomplete
 Create a function named "counter". It does
 not have any parameters.
 
@@ -16,13 +16,27 @@ console.log(counterOne()); // 3
 console.log(counterTwo()); // 1
 console.log(counterTwo()); // 2
 ------------------*/
+/*
+function closureCounter() {
+  let y = 0;
+ function counter(numb) {
+     numb += 1;
+  }
+    return counter;
+}
 
-
+const counterOne = closureCounter();
+const counterTwo = closureCounter();
+console.log(counterOne()); // 1
+console.log(counterOne()); // 2
+console.log(counterOne()); // 3
+console.log(counterTwo()); // 1
+console.log(counterTwo()); // 2
 
 
 
 /*------------------
-2)
+2)Done
 Create a function named "startingCounter".
 It takes in one parameter, a number (x).
 
@@ -39,10 +53,27 @@ console.log(counterThree()); // 13
 console.log(counterFour()); // 4
 console.log(counterFour()); // 5
 ------------------*/
+/*
+function startingCounter(x){
+  let count = x;
+ return function increaseCount(){
+  count++
 
+  return count;
+ }
+ return increaseCount;
+}
+
+const counterThree = startingCounter(10);
+const counterFour = startingCounter(3);
+console.log(counterThree()); // 11
+console.log(counterThree()); // 12
+console.log(counterThree()); // 13
+console.log(counterFour()); // 4
+console.log(counterFour()); // 5
 
 /*------------------
-3)
+3) Done! I did it!
 Create a function named "countdown". It takes
 in one parameter, a number (x). Store x
 in a variable called count.
@@ -58,11 +89,23 @@ console.log(counterFive()); // 1
 console.log(counterFive()); // "Time's up!"
 console.log(counterFive()); // "Time's up!"
 ------------------*/
-
-
+/*
+function countDown(x) {
+  let count = x;
+   return function decreasedCount() {
+    count -= 1;
+    return count >=1 ? `${count}` : "Time's up!";
+  }
+  //return decreasedCount;
+}
+const counterFive = countDown(3);
+console.log(counterFive()); // 2
+console.log(counterFive()); // 1
+console.log(counterFive()); // "Time's up!"
+console.log(counterFive()); // "Time's up!"
 
 /*------------------
-4)
+4) Done!
 Create a function named "multiplier"
 that takes in a number (x).
 
@@ -76,11 +119,20 @@ const multiplyByFive = multiplier(10);
 console.log(multiplyByFive(4)); // 20
 console.log(multiplyByTen(4)); // 40
 ------------------*/
-
-
+/*
+function multiplier(x) {
+  //let x = x * y;
+  return function newMultiplier(y) {
+    return x * y; 
+  }
+}
+const multiplyByFive = multiplier(5);
+const multiplyByTen = multiplier(10);
+console.log(multiplyByFive(4)); // 20
+console.log(multiplyByTen(4)); // 40
 
 /*------------------
-5)
+5) I'm on a roll! :)
 Create a function named "createPassword"
 that takes in a string (x).
 
@@ -95,8 +147,16 @@ const password = createPassword("123pass!");
 console.log(password("123pass!")); // Password correct.
 console.log(password("123pass")); // Password incorrect.
 ------------------*/
-
-
+/*
+function createPassword(x) {
+  let password = x;
+  return function passwordInput(y) {
+    return y === password ? 'Password correct.' : 'Password incorrect.'
+  }
+}
+const password = createPassword("123pass!");
+console.log(password("123pass!")); // Password correct.
+console.log(password("123pass")); // Password incorrect.
 
 /*------------------
 6)
@@ -120,8 +180,21 @@ console.log(marcoAccount(50, "add")); // 150
 console.log(marcoAccount(10, "add")); // 160
 console.log(marcoAccount(70, "subtract")); // 90
 ------------------*/
-
-
+/* Incomplete
+function createBankAccount(x) {
+  let startingBalance = x;
+  return function remainingBalance(y, action) {
+    let add =+ y;
+    let subtract =- y;
+    return y === remainingBalance ? `${y} + ${balance}` : `${balance} - ${y}`;
+  } 
+  
+  
+}
+const marcoAccount = createBankAccount(100);
+console.log(marcoAccount(50, "add")); // 150
+console.log(marcoAccount(10, "add")); // 160
+console.log(marcoAccount(70, "subtract")); // 90
 
 
 /*------------------

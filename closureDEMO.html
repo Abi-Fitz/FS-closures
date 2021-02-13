@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closures Demo</title>
+</head>
+<body>
+    <h1>(The good stuff is in the console log.)</h1>
+<script>
+​
+​
+​
+​
+​
+​
+​
+​
+/**********************************************************
+ * Using global variables to preserve state
+ * (It works, but there are problems...)
+ **********************************************************/
+​
+// let counter = 1;
+​
+// function getNextCount() {
+//     return counter++;
+// }
+​
+// for (let i=0; i<5; i++) {
+//     let next = getNextCount();
+//     console.log(next);
+// }
+​
+​
+​
+​
+​
+​
+​
+​
+/**********************************************************
+ * Closures: We can maintain (and hide) the state 
+ **********************************************************/
+​
+// // Declare closure creator
+ function createCounterClosure() {
+//     // Create and initialize the state we will maintain/hide
+     let counter = 1;
+​
+//     // Declare (but don't execute) the closure
+     function incrementCounter() {
+         return counter++;
+     }
+​
+//     // Return the closure
+     return incrementCounter;
+ }
+​
+// // Create closures/functions
+// let getNextCountA = createCounterClosure();
+// let getNextCountB = createCounterClosure();
+​
+// // Test them!
+// console.log('A:', getNextCountA());
+// console.log('A:', getNextCountA());
+// console.log('A:', getNextCountA());
+// console.log('B:', getNextCountB());
+// console.log('B:', getNextCountB());
+​
+​
+​
+​
+​
+​
+​
+​
+​
+​
+/**********************************************************
+ * Example: password checker
+ **********************************************************/
+​
+// // Declare closure creator
+// function createPasswordCheckClosure(validPassword) {
+//     // Create and initialize the state we will maintain/hide
+//     let password = validPassword;
+​
+//     // Declare (but don't execute) the closure
+//     function checkPassword(guess) {
+//         return guess === password;
+//     }
+​
+//     // Return the closure
+//     return checkPassword;
+// }
+​
+// // Create closures for checking against valid passwords
+// const checkSofiaPassword = createPasswordCheckClosure('123');
+// const checkOmarPassword = createPasswordCheckClosure('qwerty');
+​
+// // Test!
+// console.log( checkSofiaPassword('333') );  // false
+// console.log( checkSofiaPassword('123') );  // true
+​
+// console.log( checkOmarPassword('qwerty') );  // true
+// console.log( checkOmarPassword('foobar') );  // false
+​
+​
+​
+​
+​
+​
+​
+​
+​
+​
+​
+​
+​
+​
+​
+​
+/**********************************************************
+ * Example: bank account app
+ **********************************************************/
+​
+// // Declare closure creator
+// function createTransactionClosure(startAmount) {
+//     // Create and initialize the state we will maintain/hide
+//     let balance = startAmount;
+​
+//     // Declare (but don't execute) the closure
+//     function doTransaction(amount) {
+//         balance += amount;
+//         return balance;
+//     }
+​
+//     // Return closure
+//     return doTransaction;
+// }
+​
+// // Create a closure for making transactions on Helen's account. 
+// // Initial balance: 100
+// const doHelenTransaction = createTransactionClosure(100);
+ 
+//  // Test it!
+// console.log( doHelenTransaction(50) );  // 150
+// console.log( doHelenTransaction(20) );  // 170
+// console.log( doHelenTransaction(-300) );  // Oops!! -130!!
+​
+​
+​
+</script>
+</body>
+</html>
